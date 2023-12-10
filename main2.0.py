@@ -36,10 +36,14 @@ class Juego:
         self.fondo_pantalla = pygame.image.load("C:/Users/nicky/OneDrive/Escritorio/Python 1er cuatri/Desafio Preguntados/Imagenes/Fondo.jpg")
         self.imagen_reset = pygame.image.load("C:/Users/nicky/OneDrive/Escritorio/Python 1er cuatri/Desafio Preguntados/Imagenes/Reset.jpg")
 
-
+        # Música
         pygame.mixer.init()
         self.sonido_correcto = pygame.mixer.Sound("C:/Users/nicky/OneDrive/Escritorio/Python 1er cuatri/Desafio Preguntados/sonidos/respuesta_correcta.wav")
         self.sonido_incorrecto = pygame.mixer.Sound("C:/Users/nicky/OneDrive/Escritorio/Python 1er cuatri/Desafio Preguntados/sonidos/respuesta_incorrecta.wav")
+        self.musica_fondo = pygame.mixer.Sound("C:/Users/nicky/OneDrive/Escritorio/Python 1er cuatri/Desafio Preguntados/sonidos/musica_fondo.wav")
+        self.sonido_pregunta = pygame.mixer.Sound("C:/Users/nicky/OneDrive/Escritorio/Python 1er cuatri/Desafio Preguntados/sonidos/pregunta.wav")
+        self.sonido_reiniciar = pygame.mixer.Sound("C:/Users/nicky/OneDrive/Escritorio/Python 1er cuatri/Desafio Preguntados/sonidos/reiniciar.wav")
+        self.musica_fondo.play()
 
 
         # Fuente de Texto
@@ -109,10 +113,12 @@ class Juego:
         # Boton reiniciar
         if (50 < posicion_click[0] < 270) and (25 < posicion_click[1] < 125):
             self.iniciar_juego()
+            self.sonido_reiniciar.play()
 
         # Boton pregunta
         if (930 < posicion_click[0] < 1150) and (25 < posicion_click[1] < 125):
             self.mostrar_siguiente_pregunta()
+            self.sonido_pregunta.play()
 
         # Verifica si la opción seleccionada es correcta
         if (300 < posicion_click[0] < 900):
